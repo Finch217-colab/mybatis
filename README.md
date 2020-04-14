@@ -13,7 +13,7 @@
 - [ ]  更新 
 
 ### 图示
-![mybaits.assets](Untitled.assets/Screenshot from 2020-04-14 17-44-21.png)
+![image](https://github.com/Finch217-colab/mybatis/blob/master/Untitled.assets/Screenshot%20from%202020-04-14%2017-44-21.png)
 
 ### 致谢 
 
