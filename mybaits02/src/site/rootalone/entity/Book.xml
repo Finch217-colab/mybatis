@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>  
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace必须定义，非绑定到类或是接口的方式 -->
+<mapper namespace="site.rootalone.entity.Book">
+ 
+        <!-- 别名的方式 -->
+	<!-- resultType可以直接写完整的包名(sdibt.group.entity.Book)，也可以随便写，但是在总的配置文件中必须设置这个名对应的是那个类 -->
+  	<select id="all" resultType="book">
+    	select id as id,book_name as bookName,book_price as bookPrice,book_page as bookPage from book
+  	</select>
+ 
+        <!-- 指定类型 -->
+	<!-- 返回值就是真正的类型Book -->
+	<resultMap type="site.roootalone.entity.Book" id="allBook">
+		<id column="id" property="id" javaType="java.lang.Integer" />
+		<result column="book_name" property="bookName" javaType="java.lang.String" />
+		<result column="book_price" property="bookPrice" javaType="java.lang.String" />
+		<result column="book_page" property="bookPage" javaType="java.lang.Integer" />
+	</resultMap>
+	<!-- id是调用查询的时候用作查找的，resultMap是和上面的resultMap标签的id标签相对应 -->
+  	<select id="allMap" resultMap="allBook">
+    	<!-- select id as id,book_name as bookName,book_price as bookPrice,book_page as bookPage from book -->
+    	select * from book  
+  	</select>
+  	
+  	<!-- 返回值设置为Map -->
+  	<select id="allBookMap" resultType="java.util.Map">
+    	select * from book  
+  	</select>
+  	
+  	<!-- 根据id查找相应的书籍 -->
+  	<select id="findById" resultMap="allBook" parameterType="int">
+  		select * from book where id=#{idd}
+  	</select>  
+</mapper>
